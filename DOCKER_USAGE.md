@@ -35,7 +35,7 @@ cd docker
 
 ## 🌐 访问地址
 
-- **前端界面**: http://localhost:80
+- **前端界面**: http://localhost:3070
 - **后端 API**: http://localhost:9092
 
 ## 📋 常用命令
