@@ -1,0 +1,10 @@
+node_modules
+npm-debug.log
+Dockerfile*
+README*
+.git
+.idea
+.vs
+src
+public
+tests

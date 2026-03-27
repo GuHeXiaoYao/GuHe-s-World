@@ -1,0 +1,105 @@
+/*
+ *
+ * 
+ *
+ *   *
+ *  *
+ * *
+ * 
+ *
+ *
+ */
+
+package cn.universal.admin.system.service;
+
+import cn.universal.admin.common.service.BaseService;
+import cn.universal.persistence.entity.IoTDeviceProtocol;
+import cn.universal.persistence.entity.IoTProduct;
+import cn.universal.persistence.entity.IoTUser;
+import cn.universal.persistence.entity.bo.IoTDeviceProtocolBO;
+import java.util.List;
+import java.util.Set;
+
+/**
+ * 设备协议Service接口
+ *
+ * @since 2023-01-06
+ */
+public interface IoTDeviceProtocolService extends BaseService {
+
+  Set<String> method =
+      Set.of(
+          "decode",
+          "encode",
+          "preDecode",
+          "codecAdd",
+          "codecDelete",
+          "codecUpdate",
+          "codecQuery",
+          "iotToYour",
+          "yourToIot");
+
+  int countProtocol(String id);
+
+  /**
+   * 查询设备协议
+   *
+   * @param id 设备协议主键
+   * @return 设备协议
+   */
+  public IoTDeviceProtocol selectDevProtocolById(String id, String unionId);
+
+  /** 包名查重 */
+  int countByProvider(String provider);
+
+  /**
+   * 查询设备协议列表
+   *
+   * @param ioTDeviceProtocol 设备协议
+   * @return 设备协议集合
+   */
+  public List<IoTDeviceProtocol> selectDevProtocolList(
+      IoTDeviceProtocol ioTDeviceProtocol, IoTUser iotUser);
+
+  /**
+   * 新增设备协议
+   *
+   * @param ioTDeviceProtocol 设备协议
+   * @return 结果
+   */
+  public int insertDevProtocol(IoTDeviceProtocol ioTDeviceProtocol);
+
+  public int insertList(List<IoTDeviceProtocol> ioTDeviceProtocolList);
+
+  /**
+   * 修改设备协议
+   *
+   * @return 结果
+   */
+  public int updateDevProtocol(IoTDeviceProtocolBO ioTDeviceProtocolBO, IoTUser iotUser);
+
+  /**
+   * 批量删除设备协议
+   *
+   * @param ids 需要删除的设备协议主键集合
+   * @return 结果
+   */
+  public int deleteDevProtocolByIds(String[] ids);
+
+  /**
+   * 删除设备协议信息
+   *
+   * @param id 设备协议主键
+   * @return 结果
+   */
+  public int deleteDevProtocolById(String id);
+
+  /**
+   * 查询未创建协议的产品列表（归属人为当前用户）
+   *
+   * @param unionId 用户unionId
+   * @param searchKey 搜索关键词（产品名称或productKey）
+   * @return 产品列表
+   */
+  List<IoTProduct> selectProductsWithoutProtocol(String unionId, String searchKey);
+}

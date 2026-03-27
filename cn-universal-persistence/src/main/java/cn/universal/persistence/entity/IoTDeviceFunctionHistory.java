@@ -1,0 +1,59 @@
+/*
+ *
+ * 
+ *
+ *   *
+ *  *
+ * *
+ * 
+ *
+ *
+ */
+
+package cn.universal.persistence.entity;
+
+import cn.universal.persistence.common.inteceptor.SQenGenId;
+import com.fasterxml.jackson.annotation.JsonFormat;
+import io.swagger.v3.oas.annotations.media.Schema;
+import jakarta.persistence.Id;
+import jakarta.persistence.Table;
+import java.io.Serializable;
+import java.util.Date;
+import lombok.Data;
+import tk.mybatis.mapper.annotation.KeySql;
+
+/**
+ * *
+ * 
+ * 
+ */
+@Data
+@Table(name = "iot_device_function_history")
+public class IoTDeviceFunctionHistory implements Serializable {
+
+  private static final long serialVersionUID = 1L;
+
+  @Id
+  @KeySql(genId = SQenGenId.class)
+  private Long id;
+
+  private String iotId;
+  private String productKey;
+  private String deviceId;
+  private String deviceName;
+
+  @Schema(description = "指令配置状态  0.待下发；1.下发中；2.已下发")
+  private Integer downState;
+
+  @Schema(description = "下发结果 0.失败  1.成功")
+  private Integer downResult;
+
+  private String downError;
+
+  @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss")
+  private Date updateTime;
+
+  private Long taskId;
+  private Integer retry;
+  private String extParam;
+}

@@ -1,0 +1,17 @@
+.idea/
+.vs/
+.vscode/
+__MACOSX/
+~/
+
+node_modules/
+dist/
+target/
+logs/
+
+*.log
+*.tmp
+*.cache
+
+.DS_Store
+Thumbs.db
